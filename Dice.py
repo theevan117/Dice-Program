@@ -5,18 +5,19 @@ from random import randint
 ######################################
 
 
-# repeating loop
+# dice protocol loop
 while True:
 
-	# status of what user wants to do
+	# declaration of status var
 	status = raw_input('Do you want to roll the dice? ')
 	
-	# status condition to leave loop and do something other than roll dice
-	if status == 'no':
-		break
-	else:
+	# conditions in which the loop continues
+	if status == 'yes' or status == 'y' or status == 'Yes' or status == 'Yeah' or status == 'yeah':
 		print 'Okay!'
-	
+		
+	else:
+		break
+		
 	# declaration of dice var
 	dice = int(input('What dice do you want to roll? '))
 	
@@ -29,5 +30,5 @@ while True:
 	print 'You chose d' + str(dice)
 	print randint(1, dice)
 	
-	
+# what_do = raw_input('Would you like to check your dice rolling history? ')
 
