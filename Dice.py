@@ -26,11 +26,23 @@ import random
 
 from random import randint
 
-dice = int(input('What dice do you want to roll?'))
+dice = 1
 
-# dice rolling protocol
+# repeating loop
+while True:
 
-print 'You chose d' + str(dice)
+	dice = int(input('What dice do you want to roll? '))
 	
-print randint(1, dice)
+	# break conditions
+	if dice < 0:
+		print 'blarp'
+		break
+		
+	
+	# dice rolling protocol
+	print 'You chose d' + str(dice)
+	
+	print randint(1, dice)
+	
+	
 
