@@ -9,10 +9,10 @@ from random import randint
 while True:
 
 	# declaration of status var
-	status = raw_input('Do you want to roll the dice? ')
+	status = raw_input('Do you want to roll the dice? y/n ')
 	
 	# conditions in which the loop continues
-	if status == 'yes' or status == 'y' or status == 'Yes' or status == 'Yeah' or status == 'yeah':
+	if status == 'Y' or status == 'y' :
 		print 'Okay!'
 		
 	else:
@@ -30,5 +30,8 @@ while True:
 	print 'You chose d' + str(dice)
 	print randint(1, dice)
 	
-# what_do = raw_input('Would you like to check your dice rolling history? ')
+# declaration of what_do for later actions to be taken	
+what_do = raw_input('Would you like to check your dice rolling history? y/n ')
+
+
 
