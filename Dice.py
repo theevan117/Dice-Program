@@ -4,7 +4,9 @@ import random
 from random import randint
 ######################################
 
-dice_history = []
+# dictionary for dice_value history storage
+dice_history = {}
+
 
 # dice protocol loop
 while True:
@@ -19,24 +21,31 @@ while True:
 	else:
 		break
 		
-	# declaration of dice and dice_value vars
-	dice = int(input('What dice do you want to roll? '))
-	dice_value = randint(1, dice)
+	# declaration of dice_choice and dice_value vars
+	dice_choice = int(input('What dice do you want to roll? '))
+	dice_value = randint(1, dice_choice)
 	
 	# invalid dice choice
-	if dice <= 0:
+	if dice_choice <= 0:
 		print 'Dice value not valid, exiting....'
 		break
 		
 	# dice rolling and value storage protocol
-	print 'You chose d' + str(dice)
+	print 'You chose d' + str(dice_choice)
 	print dice_value
-	dice_history.append(dice_value)
 	
-# declaration of what_do var	
+	# storage protocol for dice_value
+	if not dice_choice in dice_history:
+		dice_history[dice_choice] = []
+		
+	dice_history[dice_choice].append(dice_value)
+	
+	
+# declaration of what_do and  var	
 what_do = raw_input('Would you like to check your dice rolling history? y/n ')
-	
-# display of dice_history var
-if what_do == "y" or what_do == "Y":
-	print dice_history
 
+
+# display of dice_record
+for dice_choice in sorted(dice_history.keys()):
+	dice_record = "{0}: {1}".format(dice_choice, dice_history[dice_choice])
+	print dice_record
