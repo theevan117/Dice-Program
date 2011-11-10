@@ -50,10 +50,7 @@ if dice_history_choice == 'y':
 	
 	for dice_choice in sorted(dice_history.keys()):
 		dice_record = "{0}: {1}".format(dice_choice, dice_history[dice_choice])
-	
-	
-	
-	print dice_record
+		print dice_record
 
 # declaration of dice_info_choice
 dice_info_choice = raw_input('Would you like some additional information about your dice-rolling statistics? y/n ')
@@ -61,9 +58,9 @@ dice_info_choice = raw_input('Would you like some additional information about y
 # display of dice_info, only includes average dice_value for each dice_choice for now
 if dice_info_choice == 'y':
 	for dice_choice in sorted(dice_history.keys()):
-		dice_average = sum((dice_history[dice_choice]) / (dice_choice * len(dice_history[dice_choice])))
+		dice_average = sum(dice_history[dice_choice]) /  float(len(dice_history[dice_choice]))
 		dice_average_output = "{0}: {1}".format(dice_choice, dice_average)
-	print dice_average_output
+		print dice_average_output
 
 # end of script
 else:
