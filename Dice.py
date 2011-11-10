@@ -1,5 +1,6 @@
 ######################################
 import random
+import sys
 
 from random import randint
 ######################################
@@ -41,11 +42,30 @@ while True:
 	dice_history[dice_choice].append(dice_value)
 	
 	
-# declaration of what_do and  var	
-what_do = raw_input('Would you like to check your dice rolling history? y/n ')
+# declaration of dice_history_choice
+dice_history_choice = raw_input('Would you like to check your dice rolling history? y/n ')
 
-
-# display of dice_record
-for dice_choice in sorted(dice_history.keys()):
-	dice_record = "{0}: {1}".format(dice_choice, dice_history[dice_choice])
+# display of dice_history, sorted by dice_choice
+if dice_history_choice == 'y':
+	
+	for dice_choice in sorted(dice_history.keys()):
+		dice_record = "{0}: {1}".format(dice_choice, dice_history[dice_choice])
+	
+	
+	
 	print dice_record
+
+# declaration of dice_info_choice
+dice_info_choice = raw_input('Would you like some additional information about your dice-rolling statistics? y/n ')
+
+# display of dice_info, only includes average dice_value for each dice_choice for now
+if dice_info_choice == 'y':
+	for dice_choice in sorted(dice_history.keys()):
+		dice_average = sum((dice_history[dice_choice]) / (dice_choice * len(dice_history[dice_choice])))
+		dice_average_output = "{0}: {1}".format(dice_choice, dice_average)
+	print dice_average_output
+
+# end of script
+else:
+	print "Goodbye!"
+	sys.exit(0)
