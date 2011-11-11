@@ -85,7 +85,7 @@ if stat_choice == 'average die rolls' or stat_choice == 'average' or stat_choice
 # display of dice_highest_output
 if stat_choice == 'highest' or stat_choice == 'highest roll' or stat_choice == 'highest rolls':
 	for highest_roll in sorted(dice_history.keys()):
-		dice_highest = max(dice_history, key=dice_choice)
+		dice_highest = max(dice_history)
 		dice_highest_output = "{0}: {1}".format(dice_choice, dice_highest)
 		print dice_highest_output
 	
