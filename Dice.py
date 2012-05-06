@@ -10,6 +10,8 @@ import sys
 
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
 from random import randint
 ######################################
 
@@ -19,37 +21,62 @@ dice_history = {}
 # list of possible choices for stat_choice var
 stat_choice_list = ['average die rolls', 'highest die rolls', 'lowest die rolls']
 
-# dice protocol loop
-while True:
+def set_false():
+        keep_going = False
 
-        # declaration of status var
-        status = raw_input('Do you want to roll the dice? y/n ')
+keep_going = True
+yes_button = Button(text = 'Yes')
+no_button = Button(text = 'No')
+no_button.bind(on_release = set_false)
 
-        # conditions in which the loop continues
-        if status == 'Y' or status == 'y' :
-                print 'Okay!'
 
-        else:
-                break
+class StageOne(App):
 
-        # declaration of dice_choice and dice_value vars
-        dice_choice = int(input('What dice do you want to roll? '))
-        dice_value = randint(1, dice_choice)
+        def build(self):
+                parent = Widget()
+                display_text = Label(text = 'Do you want to roll the dice?')
+                parent.add_widget(display_text)
+                parent.add_widget(yes_button)
+                parent.add_widget(no_button)
+                yesButton.bind(on_release = clear_widgets())
+                return parent
 
-        # invalid dice choice
-        if dice_choice <= 0:
-                print 'Dice value not valid, exiting....'
-                break
+if (keep_going is not True):
+        sys.exit()
 
-        # dice rolling and value storage protocol
-        print 'You chose d' + str(dice_choice)
-        print dice_value
 
-        # storage protocol for dice_value
-        if not dice_choice in dice_history:
-                dice_history[dice_choice] = []
+#class StageTwo(App):
 
-        dice_history[dice_choice].append(dice_value)
+ #       def build(self):
+  #              parent = Widget()
+   #             dice_input = TextInput(text = 'Which dice?', multiline = False)
+    #            dice_input.bind(on_text_validate = on_enter)
+     #           display_text = Label(text = 'Which dice?')
+      #          parent.add_widget(dice_input)
+       #         return parent
+
+#        def on_enter(instance, value):
+ #               dice_choice = int(instance)
+
+
+
+# declaration of dice_choice and dice_value vars
+dice_choice = int(input('What dice do you want to roll? '))
+dice_value = randint(1, dice_choice)
+
+# invalid dice choice
+if dice_choice <= 0:
+        print 'Dice value not valid, exiting....'
+
+# dice rolling and value storage protocol
+print 'You chose d' + str(dice_choice)
+print dice_value
+
+# storage protocol for dice_value
+if not dice_choice in dice_history:
+        dice_history[dice_choice] = []
+
+dice_history[dice_choice].append(dice_value)
 
 # declaration of choice var
 choice = raw_input('Would you like to do anything else? y/n ')
