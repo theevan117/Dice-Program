@@ -12,6 +12,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 from random import randint
 ######################################
 
@@ -38,11 +39,13 @@ class StageOne(App):
                 parent.add_widget(display_text)
                 parent.add_widget(yes_button)
                 parent.add_widget(no_button)
-                yesButton.bind(on_release = clear_widgets())
+                yes_button.bind(on_release = parent.clear_widgets())
                 return parent
 
 if (keep_going is not True):
         sys.exit()
+
+StageOne().run()
 
 
 #class StageTwo(App):
